@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="甜炒玉米粉">
 <meta property="og:description" content="常规安装做法：     if(Build.VERSION.SDK_INT&amp;gt;=24) {//判读版本是否在7.0以上         Intent install = new Intent(Intent.ACTION_VIEW);         install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);         install.addFlags(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-03T14:43:32.285Z">
+<meta property="og:updated_time" content="2018-10-03T14:48:57.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Android穷醒笔记】7.0以上下载安装APK报错：android.os.FileUriExposedException:exposed beyond app through Intent.getData()">
 <meta name="twitter:description" content="常规安装做法：     if(Build.VERSION.SDK_INT&amp;gt;=24) {//判读版本是否在7.0以上         Intent install = new Intent(Intent.ACTION_VIEW);         install.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);         install.addFlags(">
@@ -339,12 +339,18 @@
 startActivity(intent);
 </code></pre><hr>
 <p>在Manifest添加标签:</p>
-<provider android:name="android.support.v4.content.FileProvider" android:authorities="包名.fileProvider" android:granturipermissions="true" android:exported="false">
+<pre><code>&lt;provider
+    android:name=&quot;android.support.v4.content.FileProvider&quot;
+    android:authorities=&quot;包名.fileProvider&quot;
+    android:grantUriPermissions=&quot;true&quot;
+    android:exported=&quot;false&quot;&gt;
 
-<pre><code>&lt;meta-data
-    android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
-    android:resource=&quot;@xml/file_paths&quot;/&gt;
-</code></pre><p></p></provider><br>注意设置不能更改<br>Res目录下新建/xml，add一个file_paths.xml之后…<p></p>
+        &lt;meta-data
+        android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
+        android:resource=&quot;@xml/file_paths&quot;/&gt;
+
+    &lt;/provider&gt;
+</code></pre><p>注意设置不能更改<br>Res目录下新建/xml，add一个file_paths.xml之后…</p>
 <p>码上：</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;paths&gt;

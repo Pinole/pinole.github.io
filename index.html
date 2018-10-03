@@ -343,12 +343,18 @@
 startActivity(intent);
 </code></pre><hr>
 <p>在Manifest添加标签:</p>
-<provider android:name="android.support.v4.content.FileProvider" android:authorities="包名.fileProvider" android:granturipermissions="true" android:exported="false">
+<pre><code>&lt;provider
+    android:name=&quot;android.support.v4.content.FileProvider&quot;
+    android:authorities=&quot;包名.fileProvider&quot;
+    android:grantUriPermissions=&quot;true&quot;
+    android:exported=&quot;false&quot;&gt;
 
-<pre><code>&lt;meta-data
-    android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
-    android:resource=&quot;@xml/file_paths&quot;/&gt;
-</code></pre><p></p></provider><br>注意设置不能更改<br>Res目录下新建/xml，add一个file_paths.xml之后…<p></p>
+        &lt;meta-data
+        android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;
+        android:resource=&quot;@xml/file_paths&quot;/&gt;
+
+    &lt;/provider&gt;
+</code></pre><p>注意设置不能更改<br>Res目录下新建/xml，add一个file_paths.xml之后…</p>
 <p>码上：</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;paths&gt;
